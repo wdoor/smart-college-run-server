@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Nviemy1._24._2
+namespace SmartCollege
 {
     class Program
     {
@@ -49,7 +49,7 @@ namespace Nviemy1._24._2
                     }
                     foreach (Command com in result)
                     {
-                        Console.WriteLine(com);
+                        Console.WriteLine(com.body);
                         if(com.type == Command.Type.CMD)
                         {
                             Thread newThread = new Thread(ExecuteCMD);
@@ -180,7 +180,7 @@ namespace Nviemy1._24._2
                 }catch(Exception e) { outp += $"\n---{e.Message}---\n"; }
                 //Запуск 
                 try{
-                    new Thread(ExecutePsExec).Start(@" -d -i -s \\" + command.ToString() + @" 'C:\stud\succ.exe'");
+                    new Thread(ExecutePsExec).Start(@" -d -i -u 'TPC\chop' -p '111111' \\" + command.ToString() + @" 'C:\stud\succ.exe'");
                     outp += "Процесс запушен\n";
                 }catch { }
             }
